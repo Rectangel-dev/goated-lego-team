@@ -137,16 +137,24 @@ def send_discord_notification(profile_name: str, creation: dict) -> None:
         "description": f"**{creation['entity_type']}** by **{profile_name}**",
         "color": 0xFFC400,  # LEGO yellow
         "timestamp": datetime.now(timezone.utc).isoformat(),
-        "footer": {"text": "LEGO Ideas watcher"},
+        "footer": {"text": "starteratr"},
     }
     if creation.get("image"):
         embed["image"] = {"url": creation["image"]}
 
     payload = {
-        "username": "LEGO Ideas Watcher",
-        "embeds": [embed],
-        "content": f"🧱 New creation from **{profile_name}**: [{creation['title']}]({creation['id']})",
-    }
+    "username": "starteratr",
+    "content": (
+        f"@everyone\n\n"
+        f"🚨 {profile_name} just posted a new LEGO Ideas project!\n\n"
+        f"**Title:** {creation['title']}\n"
+        f"**Link:** {creation['id']}"
+    ),
+    "allowed_mentions": {
+        "parse": ["everyone"]
+    },
+    "embeds": [embed],
+}
 
     try:
         r = requests.post(DISCORD_WEBHOOK_URL, json=payload, timeout=15)
