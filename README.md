@@ -1,1 +1,1 @@
-Add your webhook URL as a secret variable in Github repository settings, customize your message and update rate in lego-watcher.yml. After that, go to the 'Actions' tab click on 'LEGO Ideas Watcher' and hit that watch workflow button! You're all set now!
+Edit the files however you want, and then deploy the page using Github pages!
