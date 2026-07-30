@@ -194,7 +194,7 @@ def main() -> None:
     log.info(f"Watching {len(PROFILES)} profile(s), checking every {CHECK_INTERVAL_SECONDS}s.")
     state = load_state()
 
-    try:
+try:
     check_profiles(state)
 except Exception as e:
     log.exception(f"Unexpected error during check cycle: {e}")
